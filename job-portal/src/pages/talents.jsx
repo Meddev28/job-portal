@@ -17,6 +17,7 @@ import {
 } from "@tabler/icons-react";
 import Footer from '../components/HomePage/footer';
 import Header from '../components/HomePage/header/header';
+import { Link } from 'react-router-dom';
 
 const Talents = () => {
     const [filters, setFilters] = useState({
@@ -433,14 +434,18 @@ const Talents = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex gap-3 mt-auto pt-4">
+                                    
                                     <button className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-center flex items-center justify-center gap-2">
                                         <IconMail className="h-4 w-4" />
                                         Message
                                     </button>
+                                    
+                                    <Link to="/talent-profile" >
                                     <button className="px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 transition-all duration-200 whitespace-nowrap flex items-center gap-2">
                                         <IconExternalLink className="h-4 w-4" />
                                         Profile
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ const NavLinks = () => {
     const links = [
         { to: "/", icon: IconHome, label: "Home" },
         { to: "/jobs", icon: IconBriefcase, label: "Jobs" },
+        { to: "/post-job", icon: IconBriefcase, label: "Post Job" },
         { to: "/talents", icon: IconFileDescription, label: "Talents" },
         { to: "/companies", icon: IconBuilding, label: "Companies" },
        // { to: "/saved", icon: IconHeart, label: "Saved" },
