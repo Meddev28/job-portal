@@ -56,8 +56,10 @@ const Header = () => {
                                         to="/profile" 
                                         className='flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors duration-200'
                                     >
+                                  
                                         <IconUser className='h-4 w-4' />
                                         <span>My Profile</span>
+                                       
                                     </Link>
                                     <Link 
                                         to="/settings" 

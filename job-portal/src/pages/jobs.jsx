@@ -404,9 +404,13 @@ const Jobs = () => {
 
                                 {/* Action Buttons - Fixed spacing */}
                                 <div className="flex gap-3 mt-auto pt-4">
+                                    
                                     <button className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-center">
+                                        <Link to={'/apply-job'}>
                                         Apply Now
+                                        </Link>
                                     </button>
+                                    
                                     <Link to="/job-details" >
                                     <button className="px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 transition-all duration-200 whitespace-nowrap">
                                         View Details
