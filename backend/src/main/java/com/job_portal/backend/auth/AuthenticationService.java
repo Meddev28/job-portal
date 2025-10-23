@@ -37,16 +37,30 @@ public class AuthenticationService {
 
     }
 
-    public AuthenticationResponse register(RegisterRequest request) {
-        Role role = roleRepository.findByName("ROLE_USER")
-                .orElseThrow(() -> new RuntimeException("Default role not found"));
 
+    public AuthenticationResponse register(RegisterRequest request) {
+
+
+        String roleName;
+        if ("RECRUITER".equalsIgnoreCase(request.getUserType())) {
+            roleName = "ROLE_RECRUITER";
+        } else if ("CANDIDATE".equalsIgnoreCase(request.getUserType())) {
+            roleName = "ROLE_CANDIDATE";
+        } else {
+            throw new IllegalArgumentException("Invalid user type. Must be CANDIDATE or RECRUITER");
+        }
+
+        // Find the role from database
+        Role role = roleRepository.findByName(roleName)
+                .orElseThrow(() -> new RuntimeException("Role not found: " + roleName));
+
+        // Create user with both role and userType
         User user = User.builder()
                 .first_name(request.getFirst_name())
                 .last_name(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(role)
+                .role(role) // Set the role entity
                 .build();
 
         userRepository.save(user);

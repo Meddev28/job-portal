@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Home from './pages/home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -11,9 +9,9 @@ import JobsDetails from './pages/jobsDetails'
 
 import ApplyJob from './pages/apply'
 import PostJob from './pages/postJob'
-import CandidateProfile from './pages/candidateProfile'
 import RecruiterProfile from './pages/recruiterProfile'
 import Companies from './pages/companies'
+import RegisterForm from './pages/register'
 
 
 function App() {
@@ -33,6 +31,7 @@ function App() {
       <Route path='/post-job' element={<PostJob/>}  />
       <Route path='/profile' element={<RecruiterProfile/>}  />
       <Route path='/companies' element={<Companies/>}  />
+      <Route path='/register' element={<RegisterForm/>}  />
     </Routes>
     </BrowserRouter>
     

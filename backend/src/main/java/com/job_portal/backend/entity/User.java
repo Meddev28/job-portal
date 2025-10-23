@@ -38,6 +38,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
