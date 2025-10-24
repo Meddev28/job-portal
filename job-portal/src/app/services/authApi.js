@@ -1,20 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { setCredentials } from "../store/slices/authSlice";
+import { baseApi } from "./baseApi";
 
 
-export const authApi = createApi({
-    reducerPath: 'authApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080/api/v1/auth'
-        
-    }),
-    
-    tagTypes: ['Auth'], // Declare tag types at the top
-
+export const authApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         registerUser: builder.mutation({
             query: (body) => ({
-                url: '/register',
+                url: '/auth/register',
                 method: 'POST',
                 body
             }),
@@ -26,12 +20,25 @@ export const authApi = createApi({
 
         loginUser: builder.mutation({
             query: (body) => ({
-                url: '/login',
+                url: '/auth/login',
                 method: 'POST',
                 body
             }),
             // After login, invalidate all auth-related data
-            invalidatesTags: ['Auth']
+            invalidatesTags: ['Auth'],
+
+            async onQueryStarted(args, {dispatch, queryFulfilled}){
+                try{
+                    const {data} = await queryFulfilled
+                    dispatch(setCredentials({ 
+                        user:data.user,
+                        token:data.token,
+                     }))
+
+                } catch(err){
+                    console.log(err)
+                }
+            }
         }),
 
     })
