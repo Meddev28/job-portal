@@ -12,29 +12,33 @@ import PostJob from './pages/postJob'
 import RecruiterProfile from './pages/recruiterProfile'
 import Companies from './pages/companies'
 import RegisterForm from './pages/register'
+import LoginForm from './pages/login'
+import Dashboard from './pages/dashboard'
 
 
 function App() {
-  
+
 
   return (
-    
-    
+
+
     <BrowserRouter>
-    <Routes>
-      <Route path='*' element={<Home/>}  />
-      <Route path='/jobs' element={<Jobs/>}  />
-      <Route path='/talents' element={<Talents/>}  />
-      <Route path='/talent-profile' element={<TalentProfile/>}  />
-      <Route path='/job-details' element={<JobsDetails/>}  />
-      <Route path='/apply-job' element={<ApplyJob/>}  />
-      <Route path='/post-job' element={<PostJob/>}  />
-      <Route path='/profile' element={<RecruiterProfile/>}  />
-      <Route path='/companies' element={<Companies/>}  />
-      <Route path='/register' element={<RegisterForm/>}  />
-    </Routes>
+      <Routes>
+        <Route path='*' element={<Home />} />
+        <Route path='/jobs' element={<Jobs />} />
+        <Route path='/talents' element={<Talents />} />
+        <Route path='/talent-profile' element={<TalentProfile />} />
+        <Route path='/job-details' element={<JobsDetails />} />
+        <Route path='/apply-job' element={<ApplyJob />} />
+        <Route path='/post-job' element={<PostJob />} />
+        <Route path='/profile' element={<RecruiterProfile />} />
+        <Route path='/companies' element={<Companies />} />
+        <Route path='/register' element={<RegisterForm />} />
+        <Route path='/login' element={<LoginForm />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes>
     </BrowserRouter>
-    
+
   )
 }
 

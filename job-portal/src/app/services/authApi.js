@@ -25,11 +25,12 @@ export const authApi = baseApi.injectEndpoints({
                 body
             }),
             // After login, invalidate all auth-related data
-            invalidatesTags: ['Auth'],
+            invalidatesTags: ['Auth', 'User'],
 
             async onQueryStarted(args, {dispatch, queryFulfilled}){
                 try{
                     const {data} = await queryFulfilled
+                    console.log('API Response:', data);
                     dispatch(setCredentials({ 
                         user:data.user,
                         token:data.token,
@@ -41,8 +42,17 @@ export const authApi = baseApi.injectEndpoints({
             }
         }),
 
+        getCurrentUser: builder.query({
+            query:() =>({
+                url: '/auth/me',
+                method: 'GET'
+            
+            }),
+            providesTags:['User']
+        })
+
     })
 
 })
 
-export const {useRegisterUserMutation, useLoginUserMutation} = authApi
+export const {useRegisterUserMutation, useLoginUserMutation, useGetCurrentUserQuery} = authApi

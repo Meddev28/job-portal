@@ -2,6 +2,7 @@ package com.job_portal.backend.auth;
 
 import com.job_portal.backend.config.JwtService;
 import com.job_portal.backend.entity.Role;
+import com.job_portal.backend.dto.UserInfoDto;
 import com.job_portal.backend.entity.User;
 import com.job_portal.backend.role.RoleRepository;
 import com.job_portal.backend.user.UserRepository;
@@ -33,7 +34,14 @@ public class AuthenticationService {
 
         var user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow();
         var token = jwtService.createToken(user);
-        return AuthenticationResponse.builder().token(token).build();
+        UserInfoDto userInfo = UserInfoDto.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .first_name(user.getFirst_name())
+                .last_name(user.getLast_name())
+                .role(user.getRole().getName())
+                .build();
+        return AuthenticationResponse.builder().token(token).user(userInfo).build();
 
     }
 
